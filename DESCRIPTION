@@ -1,0 +1,18 @@
+Package: WRFutil
+Type: Package
+Title: Utility Functions to work with WRF results
+Version: 0.1.0
+Author: Sebastian Stadler
+Maintainer: Sebastian Stadler <sebastian.stadler@ibp.fraunhofer.de>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/SebaStad/WRFutil
+BugReports: https://github.com/SebaStad/WRFutil/issues
+Suggests: 
+    testthat
+Imports: 
+    magrittr,
+    ncdf4
