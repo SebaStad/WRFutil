@@ -29,7 +29,15 @@ library(WRFutil)
 ## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Whats implemented so far?
+
+  * Read Temperature and calc temperature
+  * Read Wind and recalc on sinus/cosinus alpha
+    * Rotation is still missing
+  * f_melt for ggplot
+    * Not as fast as `reshape2::melt`, might go onto cpp?
+  * Find a position in the grid by latitude and latitude
+  
 
 ```{r cars}
 summary(cars)
