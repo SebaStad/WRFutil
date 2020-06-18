@@ -4,7 +4,7 @@ Title: Utility Functions to work with WRF results
 Version: 0.1.0
 Author: Sebastian Stadler
 Maintainer: Sebastian Stadler <sebastian.stadler@ibp.fraunhofer.de>
-Description: More about what it does (maybe more than one line)
+Description: Exports und re-calculates some values of WRF Output files.
     Use four spaces when indenting paragraphs within the Description.
 License: CC0
 Encoding: UTF-8
@@ -15,4 +15,5 @@ Suggests:
     testthat
 Imports: 
     magrittr,
-    ncdf4
+    ncdf4,
+    ggplot2

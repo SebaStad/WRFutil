@@ -37,6 +37,12 @@ Whats implemented so far?
   * f_melt for ggplot
     * Not as fast as `reshape2::melt`, might go onto cpp?
   * Find a position in the grid by latitude and latitude
+    * Needs to be reimplemented with a function refering to the file, not the already read lan/lot arrays
+
+What else is missing?
+
+  * Some form of georeferencing
+  * Maybe a tool to create a static_drivöör?
   
 
 ```{r cars}

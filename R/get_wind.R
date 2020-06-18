@@ -44,10 +44,34 @@ get_wind <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start = 1,
   h_lev <- ncvar_subs("PH", start_df = sdf, len_df = ldf, nc = nc) / Pa_to_hPA
   hb_lev <- ncvar_subs("PHB", start_df = sdf, len_df = ldf, nc = nc) / Pa_to_hPA
 
-  u_unrot <- c(u10_data, u_data) * c(cosalpha) - c(u10_data, u_data) * c(sinalpha)
-  v_unrot <- c(v10_data, v_data) * c(cosalpha) + c(v10_data, v_data) * c(sinalpha)
+  u_arr   <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  u_unrot <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  u_arr[,,1,] <- u10_data
+  u_arr[,,2:(ldf$z+1),] <- u_data
 
-  heights <- c(10, 100 * (h_lev + hb_lev) / 9.81)
+  v_arr   <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  v_unrot <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  v_arr[,,1,] <- v10_data
+  v_arr[,,2:(ldf$z+1),] <- v_data
+
+
+  h_temp <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  h_temp[,,2:(ldf$z+1),] <- (h_lev+ hb_lev)
+  heights <- array(0,c(ldf$x,ldf$y, ldf$z+1, ldf$t))
+  heights[,,1,] <- 10
+
+
+  for(i in seq(ldf$z+1)){
+    for(j in seq(ldf$t)){
+      u_unrot[,,i,j] <- u_arr[,,i,j] * cosalpha -  u_arr[,,i,j] * sinalpha
+      v_unrot[,,i,j] <- v_arr[,,i,j] * cosalpha + v_arr[,,i,j] * sinalpha
+
+      if(i>1){
+        heights[,,i,j] <- 100 *( h_temp[,,i,j] / 9.81)
+      }
+
+    }
+  }
 
   uv_dat <- sqrt(u_unrot * u_unrot + v_unrot * v_unrot)
   nc_close(nc)
