@@ -32,7 +32,7 @@ get_z_profile <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start
 
   t_data  <- ncvar_subs("T", start_df = sdf, len_df = ldf, nc = nc)
   t2_data <- ncvar_subs("T2", start_df = sdf, len_df = ldf, nc = nc)
-  ps_data <- ncvar_subs("PSFC", start_df = sdf, len_df = ldf, nc = nc)
+  ps_data <- ncvar_subs("PSFC", start_df = sdf, len_df = ldf, nc = nc) / Pa_to_hPA
   p_data  <- ncvar_subs("P", start_df = sdf, len_df = ldf, nc = nc) / Pa_to_hPA
   pb_data <- ncvar_subs("PB", start_df = sdf, len_df = ldf, nc = nc) / Pa_to_hPA
 
