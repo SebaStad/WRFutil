@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-WRF_dump <- function(ncfile, all = FALSE){
+WRF_dump <- function(ncfile, all = FALSE) {
   nc <- ncdf4::nc_open(ncfile)
 
   xdim <- nc$dim$west_east$len

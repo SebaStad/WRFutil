@@ -6,6 +6,6 @@
 #' @export
 #'
 #' @examples
-none <- function(x){
+none <- function(x) {
   !any(x)
 }
