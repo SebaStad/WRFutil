@@ -44,7 +44,7 @@ get_z_profile <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start
   theta <- c(t2_data, calc_theta(t_data))
   tempe <- calc_temp(theta, p_data, pb_data, psurf = ps_data)
 
-  data <- data.frame(
+  data <- list(
     "THTA" = theta,
     "TEMP" = tempe - 273.15,
     "HGHT" = c(2, heights)

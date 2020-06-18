@@ -52,7 +52,7 @@ get_wind <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start = 1,
   uv_dat <- sqrt(u_unrot * u_unrot + v_unrot * v_unrot)
   nc_close(nc)
 
-  return(data.frame(
+  return(list(
     "U" = u_unrot,
     "V" = v_unrot,
     "UV2" = uv_dat,
