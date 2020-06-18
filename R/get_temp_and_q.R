@@ -1,22 +1,27 @@
 #' Title
 #'
-#' @param file
-#' @param xpos
-#' @param ypos
-#' @param tstep
+#' @param ncfile
+#' @param x_start
+#' @param y_start
+#' @param z_start
+#' @param t_start
+#' @param x_len
+#' @param y_len
+#' @param z_len
+#' @param t_len
 #' @param moisture
 #'
 #' @return
 #' @export
 #'
 #' @examples
-get_z_profile <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start = 1,
+get_temp_and_q <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start = 1,
                           x_len, y_len, z_len = 1, t_len = 1, moisture = TRUE) {
   nc <- ncdf4::nc_open(ncfile)
   sdf <- data.frame(
     x = x_start,
     y = y_start,
-    z = 1,
+    z = z_start,
     t = t_start,
     stringsAsFactors = F
   )
@@ -24,7 +29,7 @@ get_z_profile <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start
   ldf <- data.frame(
     x = x_len,
     y = y_len,
-    z = nc$dim$bottom_top$len,
+    z = z_len,
     t = t_len,
     stringsAsFactors = F
   )
@@ -60,8 +65,8 @@ get_z_profile <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_start
 
   for(i in seq(ldf$z+1)){
     for(j in seq(ldf$t)){
-#      u_unrot[,,i,j] <- u_arr[,,i,j] * cosalpha -  u_arr[,,i,j] * sinalpha
-#      v_unrot[,,i,j] <- v_arr[,,i,j] * cosalpha + v_arr[,,i,j] * sinalpha
+      #      u_unrot[,,i,j] <- u_arr[,,i,j] * cosalpha -  u_arr[,,i,j] * sinalpha
+      #      v_unrot[,,i,j] <- v_arr[,,i,j] * cosalpha + v_arr[,,i,j] * sinalpha
 
       if(i>1){
         heights[,,i,j] <- 100 *( h_temp[,,i,j] / 9.81)
