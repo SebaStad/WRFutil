@@ -75,7 +75,7 @@ get_temp_and_q <- function(ncfile, x_start = 1, y_start = 1, z_start = 1, t_star
       }
       if(i==1){
         theta[,,i,j] <- t_arr[,,i,j]
-        tempe[,,i,j] <- calc_temp(theta[,,i,j], ps_data, 0)
+        tempe[,,i,j] <- calc_temp(theta[,,i,j], p_temp[,,i,j], 0)
       }
 
     }
